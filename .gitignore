@@ -1,0 +1,4 @@
+# 'gitignore file' 
+
+# venv
+*.venv_auth_django
