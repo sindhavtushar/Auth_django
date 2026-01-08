@@ -2,3 +2,6 @@
 
 # venv
 *.venv_auth_django
+
+# .env file
+*.env
