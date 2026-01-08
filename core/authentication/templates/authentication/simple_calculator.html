@@ -1,0 +1,94 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+
+{% block title %}Simple Calculator ✨{% endblock %}
+
+{% block content %}
+
+<!-- Home Button -->
+<a href="/home/" class="home-btn">🏠 Home</a>
+
+<!-- Display Django messages -->
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form method="POST" class="calculator-form">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="oprdL">Left Operand:</label>
+        <input class="table-box" type="text" id="oprdL" name="oprdL" required>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label for="oprtr">Operator:</label>
+        <select id="oprtr" name="oprtr" required>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+    </div>
+    <br>
+    
+    <div class="form-group">
+        <label for="oprdR">Right Operand:</label>
+        <input class="table-box" type="text" id="oprdR" name="oprdR" required>
+    </div>
+
+    <button type="submit" >Calculate</button>
+</form>
+
+{% if res is not None %}
+<div class="result">
+    <h2>Result: {{ res }}</h2>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .calculator-form {
+        margin-top: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    input,
+    select {
+        padding: 5px;
+        width: 100%;
+        max-width: 200px;
+    }
+
+    button {
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .result {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    .messages li {
+        margin: 5px 0;
+    }
+
+    .messages .success {
+        color: green;
+    }
+
+    .messages .error {
+        color: red;
+    }
+</style>
+{% endblock %}

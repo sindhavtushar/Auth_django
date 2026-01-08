@@ -1,0 +1,52 @@
+hello
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Calculators ✨{% endblock %}</title>
+    <link rel="stylesheet" href="{static, 'authenticatiion/authenticatiion/style.css'}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">✨ Calculators</a>
+
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Tools</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <section class="hero">
+            <p class="subtitle">
+                Numbers that surprise • Logic that feels like magic
+            </p>
+        </section>
+
+        <section class="content">
+            {% block content %}
+            {% endblock %}
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>
+            © {{ year|default:"2026" }} Calculators • Built with ❤️ and logic
+        </p>
+    </footer>
+
+</body>
+</html>

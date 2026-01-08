@@ -1,0 +1,28 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+
+{% block title %} Table Generator {% endblock %}
+
+{% block content %}
+
+<div class="calc-wrapper">
+
+    <!-- Home Button -->
+    <a href="/home/" class="home-btn">🏠 Home</a>
+
+    <h1 class="calc-heading"> Percentage Calculator</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label>Part:</label>
+        <input type="number" name="part">
+        <label>whole:</label>
+        <input type="number" name="whole">
+        <button type="submit">Calculate</button>
+    </form>
+
+    <h1 class="calc-heading"> Result: {{result | floatformat:"2"}}%</h1>
+
+</div>
+
+{% endblock %}

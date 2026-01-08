@@ -1,0 +1,28 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+
+{% block title %} Table Generator {% endblock %}
+
+{% block content %}
+
+<div class="calc-wrapper">
+
+    <!-- Home Button -->
+    <a href="/home/" class="home-btn">🏠 Home</a>
+
+    <h1 class="calc-heading"> Percentage Calculator</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label>Enter Initial Date:</label>
+        <input type="date" name="init_date">
+        <label>Enter End Date:</label>
+        <input type="date" name="end_date">
+        <button type="submit">Calculate Age</button>
+    </form>
+
+    <h1 class="calc-heading"> Age: {{result.0}} years {{result.1}} months {{result.2}} days</h1>
+
+</div>
+
+{% endblock %}

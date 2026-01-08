@@ -1,0 +1,54 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+
+{% block title %} Table Generator {% endblock %}
+
+{% block content %}
+
+<div class="calc-wrapper">
+
+    <!-- Home Button -->
+    <a href="/home/" class="home-btn">🏠 Home</a>
+
+    <h1 class="calc-heading">🔢 Table Generator</h1>
+
+    <!-- Messages -->
+    {% for message in messages %}
+        <div class="message">{{ message }}</div>
+    {% endfor %}
+
+    <!-- Form -->
+    <form method="post" class="magic-form">
+        {% csrf_token %}
+        <input type="number" name="num" placeholder="Enter a number" required>
+        <button type="submit">✨ Generate Table</button>
+    </form>
+
+    <!-- Table -->
+    {% if table %}
+    <div class="table-box">
+        <table>
+            <tr>
+                <th>No.</th>
+                <th>×</th>
+                <th>Multiplier</th>
+                <th>=</th>
+                <th>Result</th>
+            </tr>
+
+            {% for row in table %}
+            <tr>
+                <td>{{ row.0 }}</td>
+                <td>×</td>
+                <td>{{ row.1 }}</td>
+                <td>=</td>
+                <td>{{ row.2 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}
